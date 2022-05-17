@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> 요소확인 </title>
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="top">
+                <h1>첫 h1</h1>
+                <h1>두 h1</h1>
+                <p class="last">top의 p</p>
+            </div>
+            <div id="center">
+                <ul>
+                    <li>첫 li</li>
+                    <li>두 li</li>
+
+                </ul>
+            </div>
+            <div id="bottom">
+                <h1>네h1</h1>
+                <h1>다h1</h1>
+                <h1>여h1</h1>
+                <p class="last">bottom의 p</p>
+            </div>
+        </div>
+        <script>
+            // Document Object Model :문서객체모델, HTML, XML의 데이터를 사용하는 방법
+            // JS에서는 DOM을 이용해 연결된 데이터를 가져옴
+            let d=document;
+            console.log(d);
+            let bot=d.getElementById("bottom"); //id를 기준으로 해당문서에서 특정요소를 가져오는 기능
+            console.log(bot);
+            let t=d.getElementById("top");
+            console.log(t);
+            let t_h=t.getElementsByTagName(`h1`);// TagName을 기준으로 해당 문서에서 특정 요소들을 가져오는 기능.
+            console.log(t_h);
+
+            for(let i=0; i<t_h.length; i++)
+                console.log(t_h[i].firstChild.nodeName);
+
+                // Element의 자식인 텍스트노드가 값을 갖음
+                
+
+                //.nodeType : 노드 타입 확인 가능
+                //.nodeName : 해당 노드의 이름 확인, ELEMENT_NODE 에선 태그명
+                //.nodeValue : 노드가 가진 값 확인
+                //Element : 문서를 구성하고있는 요소를 의미, HTML에서는 태그가 해당
+                //브라우저가 html을 이해하기 윗해서는 node라는 단위로 해석해서 표현
+                
+                //NodeType
+                //Node.ELEMENT_NODE     1.  Element,태그***
+                //Node.ATTRIBUTE_NODE   2.  속성,id class style***
+                //Node.TEXT_NODE        3.  문자데이터를 저장하기 위한 노드***
+                //Node.CDATA_SECTION_NODE   4.  character data,미리 지정된 문자를 표기
+                //EntityReference       5.  참조개체
+                //Entity                6.  개체
+                //NodePROCESSING_INSTRUCTION_NODE   7. XML의 구조 데이터
+                //Node.COMMENT_NODE     8.  주석 <!-- -->***
+                //Node.DOCUMENT_NODE    9.  최상위에 위치한 노드 #document***
+                //Node.DOCUMENT_TYPE_NODE   10. <!DOCTYPE>***
+                //Node.DOCUMENT_FRAGMENT_NODE   11. 문서 파편 노드*** (장바구니)
+
+                let u_l=document.getElementsByTagName("ul")[0].getElementsByTagName("li");
+                console.log(u_l);
+                for(let i=0; i<u_l.length; i++)
+                    console.log(u_l[i].firstChild.nodeValue);
+
+                let p = document.getElementsByClassName("last");
+                console.log(p)
+        </script>
+    </body>
+</html>
+
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="">
+        <title>합</title>
+
+    </head>
+    <body>
+        <div id="wrap">
+        <input type="text" id="s" placeholder="시작"><br>
+        <input type="text" id="e" placeholder="끝"><br>
+        <input type="button" id='b' value="계산" onclick="func()">
+        </div>
+        <script>
+
+            function func(){
+            var s = parseInt(document.getElementById("s").value);
+            
+            var e = parseInt(document.getElementById("e").value);
+            console.log(s+e);
+            var res=0;
+            for(s; s<=e; s++ ){
+                res += s;
+            };
+            document.write(`<h1>합은 ${res}입</h1>`);
+            };
+            
+        </script>
+    </body>
+</html>

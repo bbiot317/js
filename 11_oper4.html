@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>비트연산</title>
+        <script>
+            // 비트여난 2진수로 변환후 자릿수를 기준으로 계산,결과는 계산된 숫자
+            //논리연산 결과는 true | false
+            // & : 각 자리수 비교해 둘다 1이면 1 하나라도 0이면 0
+            // | : 하나라도 1이면 1 둘다 0이면 0
+            // ^ : 서로 같으면 1 같으면 0
+            var a=3; //  11
+            var b=5; // 101
+            var result = a|b;
+            console.log(result);
+
+            // 시프트연산
+            // >>n : 2지누로 변환해서 n칸만큼 오른쪽 이동
+            // <<n : " 왼쪽 이동
+            a=3;
+            res = a<<2; // A<<B : A*(2**B)
+            console.log(res);
+            res = res>>1;
+            console.log(res);
+        </script>
+    </head>
+</html>

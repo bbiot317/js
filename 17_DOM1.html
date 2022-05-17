@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> DOM </title>
+    </head>
+    <body>
+        <div id="divid" style="color:red">이것은 내용  </div>
+        
+        <input id="inputid" name="inputname" type="text" value="기값">
+        <p id="pid">이것은 피태그 pid </p>
+        <p class="pclass">이것은 2피태그 pclass</p>
+        <script>
+            var obj= document.getElementById("divid").firstChild;
+            console.log(obj);
+            obj.style.color="blue";
+            console.log(obj.id);
+            console.log(obj.style);
+            console.log(obj.innerHTML);
+
+            var inp= document.getElementById("inputid");
+            console.log(inp);
+            console.log(inp.id);
+            console.log(inp.value);
+        </script>
+    </body>
+</html>
+
+

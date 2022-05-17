@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>삼항연산</title>
+        <script>
+            // a ? b : c    a가 참이면 b
+            var i=10;
+            var res = (i>0)? "yang" : "um";
+            console.log(res);
+
+            // null 병합연산 ***
+            // a ?? b   a가 null 또는 undefined 아닌경우 a, 그외 b
+            // (a!=null && a!= undefined)? a : b;
+            var val=null;
+            res = val??"공백";
+            console.log(res);
+
+            var unde;
+            res = unde??"없";
+            console.log(res);
+        </script>
+    </head>
+</html>

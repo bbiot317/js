@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="#">
+        <title>input 값 가져오기</title>
+    </head>
+    <body>
+        <input id="input" type="text" placeholder="적어">
+        <input type="button" value="버튼" onclick="get()">
+        <script>
+            /*
+            function get(){
+                var txt = document.getElementById("input").value;
+                console.log(txt);
+                document.write("<h1>입력된값은 "+txt+"입.</h1>")
+            }
+            */
+           function get(){
+               var txt = document.getElementById("input").value;
+               var body = document.body.innerHTML;
+               body += `<h1>입력된 값은 ${txt}입.<h1>`;
+                document.write(body);
+           }
+        </script>
+    </body>
+</html>

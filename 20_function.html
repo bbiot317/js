@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>함수 사용법</title>
+    </head>
+    <body>
+        <h1>태그를 저장할</h1>
+        <p onclick="check()">이 부ㅜㄴ을 틀릭</p>
+        <script>
+            // JS는 태그를 변수에 담을 숭 있따
+            var tag = document.getElementsByTagName("h1");
+            console.log(tag[0]);
+            
+            var type1 = 7; //자동형변환
+
+            // function 동작명(){수행문;} : JS에서 함수를 만드는 방법
+            //동작은 호출해야 실행
+            function func(){
+                console.log("실행함");
+            }
+            func();
+            //함수도 변수에 저장 가능, 변수명()로 실행
+            var type3=function test(){
+                alert("함수를 저장 가능");
+            };
+            console.log(typeof(type3));
+            type3();
+
+            function check(){
+                alert("함수실행");
+            }
+            // 만들어진 함수르 실행하는 방법
+            // 1. 함수를 직접 호출 : check();
+            // 2. 특정 태글에 onclick등 이벤트를 주어서 속성으로 실행하는 방법 : <태그 onclick="check()"></태그>
+            // 3. 태그를 JS에서 이벤트로 부여하는 방법:
+            document.getElementById("tag").addEventListener("click",check);
+        </script>
+    </body>
+</html>

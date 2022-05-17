@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>논리연산</title>
+        <script>
+            //결과가 true | false 로 반환
+
+            //부정연산자
+            // ! : 값을 반대로 바꾸는 기능
+            var res=3>5;
+            console.log(!res);
+
+            var num=10;
+            //숫자의경우 0을 제외 모두 true,0은 false로 반환 ***
+            console.log(Boolean(0))
+
+            // (조건1) && (조건2{계산의결과가 참|거짓}) 
+            // 모두 참이면 참
+            // || :
+
+            //하나가 참이면 뒤쪽은 실행 안됨 ***
+            res = alert("시작명령") || (3>5) || (5<7);
+            res =  (3>5) || (5<7) || alert("ㄱㅌ명령"); 
+        </script>
+    </head>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="#">
+        <title>입력하기</title>
+        <style>
+            div{
+                width:400px;
+                margin:0 auto;}
+        </style>
+    </head>
+    <body>
+        <div id="wrap1">
+            <fieldset>
+                <legend>체크박스</legend>
+                <input type="checkbox" value="JAVA">java
+                <input type="checkbox" value="ANDroid">android
+                <input type="checkbox" value="CSS">css<br>
+                <input type="checkbox" value="HTML">html
+                <input type="checkbox" value="JS">js
+                <input type="checkbox" value="JSP">jsp
+
+            </fieldset>
+            <fieldset>
+                <legend>셀렉</legend>
+                <select>
+                    <option value="JAVA">자바</option>
+                    <option value="ANDROID">안드</option>
+                    <option value="css">ss</option>
+                    <option value="js">js</option>
+                    <option value="html">에템</option>
+                    <option value="jsp">제스피</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <legend>버튼</legend>
+                <input type="button" id="btn" value="전송">
+            </fieldset>
+            <fieldset>
+                <legend>출력</legend>
+                <p id="check">체크내용 : </p>
+                <p id="sleect">셀렉트 내용 : </p>
+            </fieldset>
+        </div>
+        <script>
+            let a = document.getElementById("btn");
+            //Element.addEventListener(String,function); : 해당 string 상황에서 run function
+            a.addEventListener("click",function(){
+                var checks=document.getElementsByTagName("fieldset")[0].getElementsByTagName("input");                
+                var str = "체크내용 : ";
+                for(var i =0; i<checks.length; i++){
+                    // 체크되면 true
+                    if(checks[i].checked){                        
+                        str += checks[i].value+" ";
+                    }
+                }
+                document.getElementById("check").innerHTML=str;
+                
+
+                // getElementByTagName의 경우 데이터가 하나만 있어도 배열에 저장하므로 [0] index를 지정해야한다.
+                var sel=document.getElementsByTagName("fieldset")[1].getElementsByTagName("select");
+                console.log(sel[0][sel[0].selectedIndex].firstChild.texfft);
+                var str2 = "셀렉트 내용 : ";
+                document.getElementById("sleect").innerHTML="셀렡그 내용 : "+sel[0][sel[0].selectedIndex].innerHTML;
+            }); // 저장안하고 한번에 처리
+        </script>
+    </body>
+</html>
+

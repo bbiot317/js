@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="">
+        <title>Document Object Model 2</title>
+    </head>
+    <body>
+        <div id="wrap">
+            <input type="text" id="user" placeholder="아이디를"><br>
+            <input type="text" id="add" placeholder="주소를"><br>
+            <input type="button" id="btn" value="클릭" onclick="getText()"></button>
+            <a class="all">링크1</a>
+            <a class="all">링트2</a>
+            <a class="all">링트3</a>
+            <a class="all">링트4</a>
+        </div>
+        <script>
+            // focus(): 해당 요소 위치로 커서를 이동시키는 동작
+            let add = document.getElementById("add");
+            add.focus();
+            // activeElement : 현재포커스가 되어있는 요소를 가져오는 기능
+            console.log(document.activeElement)
+            function getText(){
+                if(add.value==''){
+                    alert(`노주소`);
+                    add.focus();
+                }
+            }
+
+            // addEventListener("상황",동작) : 해당 요소에 기능을 부여
+            document.addEventListener("click",test)
+            function test(e){
+                // console.log(e.target); // 지금 클릭된 요소가 무엇인지를 보여줌
+                e.target.style.backgroundColor="blue";
+            }
+
+            // document.baseURI : 현재문서의 위치를 파악할 수 있다.
+            // URI : Uniform Resource Identifier, URL+URN 같이
+            // URL : Location -> 위치를 특정하는 경우
+            // URN : Name -> 이름을 특정하는 경우
+            let URI = document.baseURI;
+            console.log(URI);
+
+            // innerHTML : Element 노드를 다루는 기법
+            // innerText : #text 노드를 다루는 기법
+            // document.getElementsByTagName('a')[0].innerHTML=`<b>이 내용 첨가</b>`;
+            document.getElementsByTagName('a')[0].innerText=`<b>이 내용 첨가</b>`;
+
+            // querySelector(); : IE8버전 이상에서만 사용 가능
+            // 단일 노드를 반환, 여러개일 경우 첫번째 것만을 반환
+            // CSS의 선택자 문법으로 호출이 가능하다는 장점이 있다.
+            let links=document.querySelector("#wrap .all");
+            console.log(links);
+            // querySelectorAll : 여러개의 노드를 반환
+            
+            links = document.querySelectorAll(".all");
+            console.log(links);
+        </script>
+    </body>
+</html>

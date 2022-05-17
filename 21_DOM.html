@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="">
+<title>DOM</title>
+</head>
+<body>
+    <div id="wrap">
+        <input type="button" id="btn" onclick="test"  value="크릭">
+    </div>
+    
+    <h1>텍스트노드 </h1>
+    <script>
+        // Node : DOM을 인식하기위해 브라우저가 해당 문서를 트리구조로 변환한 상태
+        // document Node : 문서노드 #document
+        console.log(document);
+        // Element Node : 요소, html에선 태그(텍스트는 element 아님)
+        // text node : 요소 내부의 문자데이터 #text
+        // attribute node : 속성노드 : Element의 별도의 속성을 지정하기위한 노드
+
+        // attribute : 속성, HTML등의 서식 등을 변경하기 위해 태그내부에 달리는 속성을 의미
+        // Element.Attributes : 속성을 검색
+        let btn = document.getElementById("btn");
+        // Element.Attributes.getNamedItem : 특정 이름을 가진 속성노드를 추출
+        // Element.Attributes.getNamedItem("").value : 특정 이름을 가진 속성노드가 가진 값을 추출
+        // 노드를 추출한다 != 노드가 가진 값을 추출
+        console.log(btn.attributes);
+        console.log(btn.attributes.getNamedItem("onclick")) //노드
+        console.log(btn.attributes.getNamedItem("onclick").value) 
+        
+        btn.attributes.getNamedItem("onclick").value="run()";
+        function run(){
+            alert(`값이 주입`);
+        }
+
+        // 순번에 따라 속성 노드를 가져오는 방법
+        // attributes.item(index);
+        // attributes[index];
+        console.log(btn.attributes.item(1));
+        console.log(btn.attributes[1]);
+        
+        for(let i=0; i<btn.attributes.length; i++){
+            console.log(btn.attributes[i].name);
+            console.log(btn.attributes[i].value);
+        }
+
+        // hasattribute("속성이름"); : 해당 속성노드가 존재하는 경우 true 
+        console.log(btn.hasAttribute("fdsa"));
+        console.log(btn.hasAttribute("id"));
+        // getAtttribute("속성이름") : 해당 속성노드의 값을 갖져옴
+        console.log(btn.getAttribute("id"));
+        // setAttribute(속성명, 속성값); : 해당 이름을 가진 속성의 값을 변경, 속성이 없는경우 생성
+        btn.setAttribute("class","make");
+        // removeAttribute("속성명") : 해당 이름을 가진 속성을 제거
+        btn.removeAttribute('class');
+    </script>
+</body>
+</html>

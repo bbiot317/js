@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>형변환</title>
+        <script>
+            var poi=null;
+            console.log(poi);
+            var vari;
+            console.log(vari);
+            //값이 없어서 타입이 특정되지 않은것(undefined)과 null은 다르다
+
+            var num=11;
+            console.log(typeof(num));
+            console.log(25+num);
+            var data = String(num); //형변환
+            console.log(typeof(data));
+            console.log(25+data);
+            var test = Number(data);
+            console.log(typeof(test));
+            console.log(25+test);
+            // null 데이터를 숫자로 변경하면 0이 된다
+            var emp=null;
+            
+            var zero=Number(emp);
+            console.log(zero);
+            
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>
