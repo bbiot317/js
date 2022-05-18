@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="#">
+        <title>입력하기</title>
+        <style>
+            p{background-color: green;
+            color:wheat;}
+            div{
+                border: 1px solid black;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        이렇게도 적어봄 #text
+        <div>
+            그냥 적음 #text
+            <p>#Ptext</p>
+            #text
+        </div>
+        <div id="wrap">
+            <!--beforebegin -->
+            <p>
+                <!-- afterbegin-->
+                기준점
+                <!--beforeend-->
+            </p>
+            <!--afterend-->
+        </div>
+        <script>
+            // inseretAdjacentHTML(위치,"텍스트"); :위치를 기준으로 특정 데이터를 입력
+            let colorText = "<b style='color:red;'> 위치확인 </b>";
+            let p = document.getElementsByTagName("p")[1];
+            console.log(p);
+            console.log(colorText);
+            // p.insertAdjacentHTML("beforebegin",colorText);
+            // p.insertAdjacentHTML("afterbegin",colorText);
+            // p.insertAdjacentHTML("beforeend",colorText);
+            p.insertAdjacentHTML("afterend",colorText);
+
+            //Node 종류 
+            // #document Node : 최상위 노드
+            // Element Node : DOM을 구성하는 기본 요소 html에서는 태그가 해당
+            // Attribute Node : 속성노드, Element Node의 속성 정보를 저장하는 노드
+            // #text : Element Node의 문자로 이루어진 데이터를 저장하는 노드
+
+            // Element Node의 생성
+            // createElement (노드이름); : 해당 노드를 생성한다.
+            // 생성된 노드는 위치를 잡지 못해 눈에 보이게 하려면 위치 잡아줘야
+            let ce = document.createElement("div");
+            ce.innerHTML ="<p>저는 만들어진 요소</p>"
+            console.log(ce);
+
+            // Element Node의 연결
+            // document.body.appendChild(ce);
+            document.getElementById(`wrap`).appendChild(ce);
+
+            // insertBefore(신규요소, 뒤에나올요소) ; : 위치를 지정하여 노드를 삽입하는 방법
+            // 뒤에나올 요소가 없는경우(null)인경우 가장 마지막에 위치
+            let second=document.getElementById('wrap');
+            let second_p=second.getElementsByTagName("p")[0];
+            console.log(second_p);
+            document.getElementById('wrap').insertBefore(ce, p);
+            // document.getElementById('wrap').insertBefore(ce, null);
+            
+            // Element의 위치를 지정할뿐 새로 제작되는게 아님
+            // 따라서 위치를 바꾸면 원래자리에선 사라지는것처럼 보임
+            
+            let div = document.createElement('div'); //Element노드 제작
+            div.setAttribute("id","content") ;  //  Element노드에 연결된 attribute노드를 생성
+            div.innerHTML="<p> 제작된 div내부 p.</p>"; // HTML서식으로(태그살려서) 입력
+            console.log(div);
+            document.body.appendChild(div);     //고아노드를 위치를 잡아 연결 - 화면에 출력됨
+
+            // 텍스트 노드를 생성하는 방식
+            // createTextNode('드갈 텍스트 값');
+            let text= document.createTextNode('저는 #text 임');
+            div.appendChild(text);
+
+            let h2=document.createElement("h2");
+            h2.appendChild(text);
+            div.appendChild(h2);
+        </script>
+
+    </body>
+
+</html>
+
