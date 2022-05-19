@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="">
+        <title>DOM5</title>
+        <style id="styletag">
+            div{
+                border: 1px solid;
+                width: 100px;
+                height: 80px;
+                margin:0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="background-color:blue; color: white; height: 100px;">
+
+        </div>
+        <script>
+            let div=document.getElementsByTagName('div')[0];
+            let divstyle=div.style;
+            console.log(divstyle.backgroundColor);
+            //카멜표기법 : background color, backgroundColor
+            //파스칼 : background color, BackgroundColor
+            //팟홀 : background color, background_color
+        
+            divstyle.backgroundColor='red';
+            divstyle.border='3px dotted blue';
+            divstyle.width='450px';
+            divstyle.height='400px';
+            divstyle.backgroundColor='';
+
+            div.setAttribute('style','background-color:blue; border:2px solid red; width:300px; ');
+            div.setAttribute('style','background-color:black');
+            //마지막으로 변경된 style만 남기 때문에 순차적으로 디자인을 입힐 경우 이전의 값이 소실되는 현상이 발생한다.
+            // console.log(Element.getAttribute('style'));
+            // 삭제방법 Element.removeAttribute('style');
+
+            //스타일 정보를 저장하는 메서드를 사용하는 방법
+            // Element.style.setProperty('속성명','속성값');
+            divstyle.setProperty('background-color','red');
+            divstyle.setProperty(`width`,'600px');
+            //확인방법 console.log(Element.style.getPropertyValue('속성명'));
+            //삭제방법 Element.style.removeProperty('속성명');
+
+            // cssText 를 이용
+            console.log(divstyle.cssText);
+
+            //실질적으로 해당 Element에 반영되어 있는 디자인을 가져오는 방법
+            // document.영역을 벗어난 오브젝트의 경우 BOM을 통해서 접근
+            let divcss=window.getComputedStyle(div);
+            console.log(divcss.margin);
+            console.log(divcss.backgroundColor);
+            console.log(divcss.width);
+            console.log(divcss.height);
+            console.log(divcss.border);
+
+            let doccss=document.styleSheets[0]; // 문서로부터 추출한 css 정보
+            console.log(doccss);
+            let styletag=document.getElementById("styletag");
+            console.log(styletag);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="">
+        <title>DOM,BOM</title>
+    </head>
+    <body>
+        <div id="wrap">
+            <p>첫번 </p>
+            <p>첫번 </p>
+            <p>첫번 </p>
+            <p>첫번 </p>
+            <input type="button" value="새탑열기"><br>
+            <input type="button" value="창닫기">
+        </div>
+        <script>
+            let wrap=document.getElementById('wrap');
+            console.log(wrap);
+            let ps=wrap.getElementsByTagName('p');
+            console.log(ps);    //HTML collection : 내부의 요소가 HTML tag라는 특징이 있음
+            let nodes=wrap.childNodes;
+            console.log(nodes); //NodeList : 내부 요소가 Node이므로 #text를 포함한 전체의 노드를 의미
+
+            //BOM : Browser Object Model ,브라우저 객체 모델
+            //window라는 객체 내부에 데이터가 저장되어 있따.
+
+            console.log(window);
+            let width=window.innerWidth;    //브라우저의 내부 폭을 확인
+            console.log(width);
+            let height=window.innerHeight;
+            console.log(height);
+
+            let inputs=document.getElementsByTagName('input');
+            inputs[0].addEventListener("click",windopn);
+            inputs[1].addEventListener("click",winclose);
+            function windopn(){
+                window.open(); //새 탭을 열어주는 기능
+            }
+            function winclose(){
+                window.close(); //창을 닫는
+            }
+
+            //BOM을 통해 해당 브라우저의 정보 이력을 얻기 위해 사용하는 경우
+            let data=window.location.href;
+            console.log(`URL- ${data}`);
+            data=window.location.pathname;
+            console.log(`파일명= ${data}`);
+            data=window.location.protocol;
+            console.log(`프로토콜 =${data}`);
+
+
+
+        </script>
+
+    </body>
+
+</html>
