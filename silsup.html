@@ -13,6 +13,7 @@
             }
             fieldset{
                 padding:20px;
+                margin:10px
             }
             div{ 
                 width: 400px;
@@ -29,7 +30,7 @@
         <fieldset>
             <legend>배경색 선택</legend>
             <select>
-                <option value="bl">검은색</option>
+                <option value="bl" onclick="bg()">검은색</option>
                 <option value="re">빨간색</option>
                 <option value="ye">노란색</option>
                 <option value="gr">초록색</option>
@@ -47,11 +48,11 @@
         <fieldset>
             <legend>문자입력</legend>
             <input type="text" placeholder="문자를 입력">
-            <input type="button" value="클릭" >
+            <input type="button" id="btn" value="클릭" onclick="click">
         </fieldset>
         <fieldset>
             <legend>출력횟수 선택</legend>
-            <input type="range" min="1" max="5" value="1">
+            <input type="range" id="range" min="1" max="5" value="1" onclick="getRange()">
             
         </fieldset>
         <fieldset>
@@ -61,7 +62,25 @@
 
         </div>
         <script>
-            for(let i=0; i<value; i++){
+            let fds = document.getElementsByTagName('fieldset');
+
+
+            
+            console.log(fds);
+            let x = document.getElementsByTagName(`select`).value;
+                console.log(x);
+            function bg(){
+                let x = document.getElementsByTagName(`select`).value;
+                console.log(x);
+            }
+
+            function getRange(){
+                let x = range.value;
+                console.log(x);
+            }
+            let range = document.getElementById('range');
+            console.log(range.value);
+            for(let i=0; i<range; i++){
 
             }
 
