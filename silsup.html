@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html>
-    <div id="full">
-    
     <head>
         <div id="head">
         <meta charset="utf-8">
@@ -12,14 +10,18 @@
                 padding: 0;
             }
             fieldset{
-                padding:20px;
-                margin:10px
+                padding:10px;
+                margin:20px
             }
             div{ 
                 width: 400px;
                 margin:0 auto;
-                /* margin-left: 50% auto;
-                margin-right: 50% auto; */
+            }
+            p{
+                padding: 5px;
+            }
+            fieldset label:nth-child(4) {
+                margin-right: 5px;
             }
         </style>
        </div>
@@ -29,62 +31,102 @@
         <div id="body">
         <fieldset>
             <legend>배경색 선택</legend>
-            <select>
-                <option value="bl" onclick="bg()">검은색</option>
+            <select onclick="bg()">
+                <option value="bl">검은색</option>
                 <option value="re">빨간색</option>
                 <option value="ye">노란색</option>
                 <option value="gr">초록색</option>
-                <option value="wh">흰색</option>
+                <option value="wh" selected>흰색</option>
             </select>
         </fieldset>
         <fieldset>
             <legend>문자색 선택</legend>
-            <label><input type="radio" name="col" value="bl">검은색</label>
-            <label><input type="radio" name="col" value="wh">흰색</label>
-            <label><input type="radio" name="col" value="ye">노란색</label>
-            <label><input type="radio" name="col" value="gr">초록색</label>
-            <label><input type="radio" name="col" value="re">빨간색</label>
+            <label><input type="radio" name="color" value="bl">검은색</label>&nbsp;
+            <label><input type="radio" name="color" value="wh">흰색</label>&nbsp;
+            <label><input type="radio" name="color" value="ye">노란색</label>&nbsp;
+            <label><input type="radio" name="color" value="gr">초록색</label>&nbsp;
+            <label><input type="radio" name="color" value="re">빨간색</label>
         </fieldset>
         <fieldset>
             <legend>문자입력</legend>
             <input type="text" placeholder="문자를 입력">
-            <input type="button" id="btn" value="클릭" onclick="click">
+            <input type="button" id="btn" value="클릭" onclick="btn()">
         </fieldset>
         <fieldset>
             <legend>출력횟수 선택</legend>
-            <input type="range" id="range" min="1" max="5" value="1" onclick="getRange()">
-            
+            <input type="range" min="1" max="15" value="1" >
+            <output></output>
+            <b id="b">1</b>
         </fieldset>
         <fieldset>
             <legend>출력 영역</legend>
-            <p></p>
+            <p id="p"></p>
         </fieldset>
-
         </div>
         <script>
-            let fds = document.getElementsByTagName('fieldset');
-
 
             
-            console.log(fds);
-            let x = document.getElementsByTagName(`select`).value;
-                console.log(x);
+            
+            let qt=document.querySelectorAll("legend ~ label:nth-of-type(4)");
+            console.log(qt);
+
+            
+
             function bg(){
-                let x = document.getElementsByTagName(`select`).value;
-                console.log(x);
+                let x = document.querySelector("select").value;
+                let pstyle = document.querySelector("fieldset:last-child p").style;
+                switch(x){
+                    case 'bl':pstyle.setProperty('background-color','black');
+                      break;
+                    case 'ye': pstyle.setProperty('background-color','yellow');
+                      break;
+                    case 'gr':pstyle.setProperty('background-color','green');
+                      break;
+                    case 're':pstyle.setProperty('background-color','red');
+                      break;
+                    case 'wh':pstyle.setProperty('background-color','white');
+                      break;
+                }
             }
 
-            function getRange(){
-                let x = range.value;
-                console.log(x);
+            let col=document.querySelectorAll("input[name=color]");
+            for(let i=0; i<col.length; i++){
+                col[i].addEventListener("click",color);
             }
-            let range = document.getElementById('range');
-            console.log(range.value);
-            for(let i=0; i<range; i++){
+            
+            function color(e){
+                let pstyle = document.querySelector("fieldset:last-child p").style;
+                switch(e.target.value){
+                    case 'bl':pstyle.setProperty('color','black');
+                      break;
+                    case 'ye': pstyle.setProperty('color','yellow');
+                      break;
+                    case 'gr':pstyle.setProperty('color','green');
+                      break;
+                    case 're':pstyle.setProperty('color','red');
+                      break;
+                    case 'wh':pstyle.setProperty('color','white');
+                      break;
+                }
+            }
+        
+            function btn(){
+                let txt = document.querySelector("fieldset input[placeholder]").value;
+                document.querySelector('#p').innerText="";
+                for(let i=0; i<range.value; i++){
+                    document.querySelector('#p').innerText += txt;
+                }
+            }
 
+            let range = document.querySelector("fieldset legend+input[type=range]");
+            range.addEventListener("input",oninput);
+            
+            function oninput(e){
+                let rangePrint=document.querySelector("fieldset b[id=b]");
+                rangePrint.innerText=e.target.value;
             }
+
 
         </script>
     </body>
-    </div>
 </html>
